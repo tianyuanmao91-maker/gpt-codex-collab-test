@@ -1,0 +1,1 @@
+{"name":"codex-autoloop-mvp","version":"0.1.0","private":true,"type":"commonjs","scripts":{"start":"node src/watcher.js","test":"node --test"}}
