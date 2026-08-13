@@ -1,0 +1,1 @@
+$root=$PSScriptRoot;$pf=Join-Path $root 'state\watcher.pid';if(Test-Path $pf){$p=[int](Get-Content $pf -Raw);Stop-Process -Id $p -Force -ErrorAction SilentlyContinue;Remove-Item $pf -Force;Write-Host "Stopped PID=$p"}else{Write-Host 'No watcher PID file.'}

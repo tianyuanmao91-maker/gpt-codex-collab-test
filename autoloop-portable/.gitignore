@@ -1,0 +1,7 @@
+config.local.json
+autoloop/config.json
+logs/*
+!logs/.gitkeep
+state/*
+!state/.gitkeep
+*.zip
