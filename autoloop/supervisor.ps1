@@ -1,7 +1,7 @@
 $ErrorActionPreference='Continue'
 $app=$PSScriptRoot
 $root=Split-Path -Parent $app
-$cfg=Join-Path (Split-Path -Parent $root) 'autoloop-real-config.json'
+$cfg=Join-Path (Split-Path -Parent (Split-Path -Parent $root)) 'autoloop-real-config.json'
 $node=(Get-Command node.exe).Source
 $runner=Join-Path $app 'src\runner.js'
 $log=Join-Path $app 'logs\supervisor.log'
