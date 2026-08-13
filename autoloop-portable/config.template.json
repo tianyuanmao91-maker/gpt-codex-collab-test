@@ -1,0 +1,12 @@
+{
+  "repository": "owner/repository",
+  "projects": { "collab-test": { "localPath": "C:/path/to/project" } },
+  "codexCli": "",
+  "ghCli": "",
+  "gitCli": "",
+  "pollIntervalMs": 30000,
+  "proxy": "",
+  "logDir": "",
+  "stateDir": "",
+  "triggerIssueNumbers": []
+}

@@ -1,0 +1,6 @@
+{
+  "repository": "owner/repository",
+  "projects": { "collab-test": { "localPath": "C:/path/to/project" } },
+  "pollIntervalMs": 30000,
+  "proxy": ""
+}
