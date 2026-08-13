@@ -1,6 +1,6 @@
 # Codex AutoLoop MVP
 
-最小本地 watcher：轮询 GitHub Issue，按 `project` 路由配置发现 `READY` 任务，记录 JSONL 状态。执行器、Git 与 Draft PR 适配器保持独立，默认不 Merge。
+最小本地 doorbell：轮询 GitHub Issue，按 `project` 路由配置发现 `READY` 任务，并在项目目录唤醒 Codex。Branch、修改、测试、Commit、Push 和 Draft PR 全部由 Codex 根据 Issue 自行完成。
 
 ## Issue 标记
 
