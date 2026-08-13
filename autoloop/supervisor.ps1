@@ -7,6 +7,8 @@ $runner=Join-Path $app 'src\runner.js'
 $log=Join-Path $app 'logs\supervisor.log'
 $env:GH_CLI='C:\Users\11516\Documents\Codex\2026-08-06\w\outputs\gh-cli\bin\gh.exe'
 $env:CODEX_CLI='C:\Users\11516\Documents\Codex\2026-08-06\w\outputs\autoloop-node1-test\node_modules\@openai\codex-win32-x64\vendor\x86_64-pc-windows-msvc\bin\codex.exe'
+$gitDir='C:\Users\11516\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd'
+if(Test-Path (Join-Path $gitDir 'git.exe')){$env:PATH=$gitDir+';'+$env:PATH}
 New-Item -ItemType Directory -Force (Split-Path $log) | Out-Null
 while($true){
   try { Add-Content $log ("START " + (Get-Date -Format o)); & $node $runner $cfg --watch *>> $log } catch { Add-Content $log ((Get-Date -Format o)+" ERROR "+$_.Exception.Message) }
