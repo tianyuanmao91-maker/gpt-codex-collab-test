@@ -29,6 +29,7 @@ function promptFor(issue, repository) {
     `issue number: ${issue.number}`,
     'The GitHub Issue is the only source of truth. Read the complete Issue before acting.',
     'Follow its acceptance criteria and prohibited actions exactly.',
+    'Actually perform the task now using terminal tools. Do not merely describe a plan, proposal, summary, or recommendation.',
     'Create an independent task branch from the latest main, modify only task-related files, run relevant validation, commit and push, and create a Draft PR to main linked to the Issue.',
     'Do not directly modify or merge main. Do not invent requirements. If the Issue is incomplete or blocked, stop and report that state.',
   ].join('\n');
@@ -56,7 +57,7 @@ function createDoorbell(config) {
       state.issues[issue.number] = { status: 'triggered', triggerTimestamp: new Date().toISOString() };
       writeJson(stateFile, state);
       try {
-        const result = await runCodex({ cwd: config.projects[meta.project].localPath, prompt: promptFor(issue, config.repository) });
+        const result = await runCodex({ cwd: config.projects[meta.project].localPath, prompt: promptFor(issue, config.repository), logDir: config.logDir, issueNumber: issue.number });
         log({ issue: issue.number, state: STATES.RUNNING, action: 'triggered', codexExitCode: result.code, errorCode: null });
         log({ issue: issue.number, state: STATES.RUNNING, action: 'codex_exit', codexExitCode: result.code, errorCode: null });
       } catch (error) {
