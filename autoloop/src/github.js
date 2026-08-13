@@ -6,4 +6,5 @@ async function issue(repo,n){return JSON.parse(await run([`repos/${repo}/issues/
 async function comments(repo,n){return JSON.parse(await run([`repos/${repo}/issues/${n}/comments?per_page=100`]));}
 async function createDraftPr(repo,head,base,title,body){return JSON.parse(await run([`repos/${repo}/pulls`,'-f',`head=${head}`,'-f',`base=${base}`,'-f',`title=${title}`,'-f',`body=${body}`,'-F','draft=true']));}
 async function prComments(repo,n){return JSON.parse(await run([`repos/${repo}/issues/${n}/comments?per_page=100`]));}
-module.exports={run,listReadyIssues,issue,comments,createDraftPr,prComments};
+async function findPr(repo,head){const data=JSON.parse(await run([`repos/${repo}/pulls?state=open&per_page=100`])); return data.find(p=>p.head&&p.head.ref===head)||null;}
+module.exports={run,listReadyIssues,issue,comments,createDraftPr,prComments,findPr};
